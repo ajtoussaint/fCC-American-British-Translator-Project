@@ -27,22 +27,67 @@ test("Translate We had a party at my friend's condo. to British English", functi
 });
 
 //Translate Can you toss this in the trashcan for me? to British English
+test("Translate Can you toss this in the trashcan for me? to British English", function(){
+  let input = "Can you toss this in the trashcan for me?";
+  let output = Translator.translateToBritish(input);
+  assert.equal(output, "Can you toss this in the bin for me?");
+});
 
 //Translate The parking lot was full. to British English
+test("Translate The parking lot was full. to British English", function(){
+  let input = "The parking lot was full.";
+  let output = Translator.translateToBritish(input);
+  assert.equal(output, "The car park was full.");
+});
 
 //Translate Like a high tech Rube Goldberg machine. to British English
+test("Translate Like a high tech Rube Goldberg machine. to British English", function(){
+  let input = "Like a high tech Rube Goldberg machine.";
+  let output = Translator.translateToBritish(input);
+  assert.equal(output, "Like a high tech Heath Robinson device.");
+});
 
 //Translate To play hooky means to skip class or work. to British English
+test("Translate To play hooky means to skip class or work. to British English", function(){
+  let input = "To play hooky means to skip class or work."
+  let output = Translator.translateToBritish(input);
+  assert.equal(output, "To bunk off means to skip class or work.");
+});
 
 //Translate No Mr. Bond, I expect you to die. to British English
+test("Translate No Mr. Bond, I expect you to die. to British English", function(){
+  let input = "No Mr. Bond, I expect you to die.";
+  let output = Translator.translateToBritish(input);
+  assert.equal(output, "No Mr Bond, I expect you to die.");
+});
 
 //Translate Dr. Grosh will see you now. to British English
+test("Translate Dr. Grosh will see you now. to British English", function(){
+  let input = "Dr. Grosh will see you now.";
+  let output = Translator.translateToBritish(input);
+  assert.equal(output, "Dr Grosh will see you now.");
+});
 
 //Translate Lunch is at 12:15 today. to British English
+test("Translate Lunch is at 12:15 today. to British English", function(){
+  let input = "Lunch is at 12:15 today.";
+  let output = Translator.translateToBritish(input);
+  assert.equal(output, "Lunch is at 12.15 today.");
+});
 
 //Translate We watched the footie match for a while. to American English
+test("Translate We watched the footie match for a while. to American English", function(){
+  let input = "We watched the footie match for a while.";
+  let output = Translator.translateToAmerican(input);
+  assert.equal(output, "We watched the soccer match for a while.");
+});
 
 //Translate Paracetamol takes up to an hour to work. to American English
+test("Translate Paracetamol takes up to an hour to work. to American English", function(){
+  let input = "Paracetamol takes up to an hour to work.";
+  let output = Translator.translateToAmerican(input);
+  assert.equal(output, "Tylenol takes up to an hour to work.");
+});
 
 //Translate First, caramelise the onions. to American English
 
