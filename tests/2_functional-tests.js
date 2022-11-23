@@ -59,7 +59,7 @@ suite('Functional Tests', () => {
   });
 
   //Translation with missing locale field: POST request to /api/translate
-  test("translate with missing text field", function(done){
+  test("translate with missing locale field", function(done){
     chai.request(server)
       .post('/api/translate')
       .send({
@@ -98,6 +98,7 @@ suite('Functional Tests', () => {
         locale: "british-to-american"
       })
       .end( (err, res) => {
+        console.log("RESPONSE: ", res.body);
         assert.equal(res.status, 200);
         assert.isString(res.body, "response is not a string");
         assert.deepEqual(res.body, "Everything looks good to me!", "Translated unecessarily");
