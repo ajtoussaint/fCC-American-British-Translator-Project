@@ -25,7 +25,7 @@ class Translator {
         console.log("NEXT: ", translatedText[translatedText.toLowerCase().indexOf(string.toLowerCase()) + string.length]);
 
         //if the next character is not another letter...begin translation
-        if(!(/[A-Za-z]/.test(translatedText[translatedText.toLowerCase().indexOf(string.toLowerCase()) + string.length]))){
+        if(!(/[A-Za-z]/.test(translatedText[translatedText.toLowerCase().indexOf(string.toLowerCase()) + string.length])) && Object.values(americanToBritishTitles).indexOf(string) != -1){
           translatedText = translatedText.slice(0, translatedText.toLowerCase().indexOf(string.toLowerCase())) +
             '<span class="highlight">' +
             americanTranslations[britishThings.indexOf(string)] +
@@ -51,7 +51,7 @@ class Translator {
       //If you find an instance of a british thing replace it with the american thing
       if(translatedText.toLowerCase().indexOf(string.toLowerCase()) != -1){
         console.log("American thing:", string);
-        if(!(/[A-Za-z]/.test(translatedText[translatedText.toLowerCase().indexOf(string.toLowerCase()) + string.length]))){
+        if(!(/[A-Za-z]/.test(translatedText[translatedText.toLowerCase().indexOf(string.toLowerCase()) + string.length])) || Object.keys(americanToBritishTitles).indexOf(string) != -1){
           translatedText = translatedText.slice(0, translatedText.toLowerCase().indexOf(string.toLowerCase())) +
             '<span class="highlight">' +
             britishTranslations[americanThings.indexOf(string)] +
