@@ -25,7 +25,7 @@ class Translator {
         console.log("NEXT: ", translatedText[translatedText.toLowerCase().indexOf(string.toLowerCase()) + string.length]);
 
         //if the next character is not another letter...begin translation
-        if(!(/[A-Za-z]/.test(translatedText[translatedText.toLowerCase().indexOf(string.toLowerCase()) + string.length])) && Object.values(americanToBritishTitles).indexOf(string) != -1){
+        if(!(/[A-Za-z]/.test(translatedText[translatedText.toLowerCase().indexOf(string.toLowerCase()) + string.length])) || (Object.values(americanToBritishTitles).indexOf(string) != -1 && string != "Mr")){
           translatedText = translatedText.slice(0, translatedText.toLowerCase().indexOf(string.toLowerCase())) +
             '<span class="highlight">' +
             americanTranslations[britishThings.indexOf(string)] +
