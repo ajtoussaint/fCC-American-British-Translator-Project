@@ -19,41 +19,52 @@ class Translator {
     let translatedText = text;
     britishThingsSort.forEach( (string, index) => {
       //If you find an instance of a british thing replace it with the american thing
-      if(translatedText.indexOf(string) != -1){
-        console.log(string);
-        translatedText = translatedText.replace(string, americanTranslations[americanThings.indexOf(string)]);
+      if(translatedText.toLowerCase().indexOf(string.toLowerCase()) != -1){
+        console.log("British thing: ", string);
+        console.log("American thing:", americanTranslations[britishThings.indexOf(string)]);
+        console.log("NEXT: ", translatedText[translatedText.toLowerCase().indexOf(string.toLowerCase()) + string.length]);
+
+        //if the next character is not another letter...begin translation
+        if(!(/[A-Za-z]/.test(translatedText[translatedText.toLowerCase().indexOf(string.toLowerCase()) + string.length]))){
+          translatedText = translatedText.slice(0, translatedText.toLowerCase().indexOf(string.toLowerCase())) +
+            '<span class="highlight">' +
+            americanTranslations[britishThings.indexOf(string)] +
+            '</span>' +
+            translatedText.slice(translatedText.toLowerCase().indexOf(string.toLowerCase())+string.length, translatedText.length);
+        }
       }
     });
     //once all british things have been replaced check for times
-    let foundTimes = translatedText.match(/\d?\\.\d\d/g);
+    let foundTimes = translatedText.match(/\d?\d\.\d\d/g);
     if(foundTimes){
       foundTimes.forEach(i => {
-        translatedText = translatedText.replace(i, i.replace(".", ":"));
+        translatedText = translatedText.replace(i, '<span class="highlight">' + i.replace(".", ":") + '</span>');
       });
     }
     console.log("TRANSLATION: ", translatedText);
     return translatedText;
   }
 
-
-
-
-
-
   translateToBritish(text){
     let translatedText = text;
     americanThingsSort.forEach( (string, index) => {
       //If you find an instance of a british thing replace it with the american thing
-      if(translatedText.indexOf(string) != -1){
+      if(translatedText.toLowerCase().indexOf(string.toLowerCase()) != -1){
         console.log("American thing:", string);
-        translatedText = translatedText.replace(string, britishTranslations[americanThings.indexOf(string)]);
+        if(!(/[A-Za-z]/.test(translatedText[translatedText.toLowerCase().indexOf(string.toLowerCase()) + string.length]))){
+          translatedText = translatedText.slice(0, translatedText.toLowerCase().indexOf(string.toLowerCase())) +
+            '<span class="highlight">' +
+            britishTranslations[americanThings.indexOf(string)] +
+            '</span>' +
+            translatedText.slice(translatedText.toLowerCase().indexOf(string.toLowerCase()) + string.length, translatedText.length);
+        }
       }
     });
     //once all british things have been replaced check for times
-    let foundTimes = translatedText.match(/\d?\:\d\d/g);
+    let foundTimes = translatedText.match(/\d?\d:\d\d/g);
     if(foundTimes){
       foundTimes.forEach(i => {
-        translatedText = translatedText.replace(i, i.replace(":", "."));
+        translatedText = translatedText.replace(i,'<span class="highlight">' + i.replace(":", ".") + '</span>');
       });
     }
     console.log("TRANSLATION: ", translatedText);

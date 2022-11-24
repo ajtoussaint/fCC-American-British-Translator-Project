@@ -21,7 +21,7 @@ suite('Functional Tests', () => {
         assert.isObject(res.body, "response is not an object");
         assert.deepEqual(res.body, {
           text: "Mangoes are my favorite fruit.",
-          translation: 'Mangoes are my <span class="highlight">favourite<span> fruit.'
+          translation: 'Mangoes are my <span class="highlight">favourite</span> fruit.'
         }, "incorrect translation");
         done();
       });

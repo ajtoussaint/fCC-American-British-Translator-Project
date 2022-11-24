@@ -19,13 +19,13 @@ module.exports = function (app) {
       }else{
         //if everything seems in order
         let translatedText = req.body.locale == "american-to-british" ?
-          translator.highlightBritish(translator.translateToBritish(req.body.text)) :
-          translator.highlightAmerican(translator.translateToAmerican(req.body.text));
+          translator.translateToBritish(req.body.text) :
+          translator.translateToAmerican(req.body.text);
 
         if(translatedText === req.body.text){
           res.json("Everything looks good to me!");
         }else{
-          res.json(translatedText);
+          res.json({text: req.body.text, translation: translatedText});
         }
 
       }
